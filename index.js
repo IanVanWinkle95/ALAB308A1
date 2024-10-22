@@ -6,4 +6,9 @@ function incrementVariable(number) {
         incrementVariable(number+1)
     }
 }
-incrementVariable(0)
+try {
+    incrementVariable(0)
+} catch (error) {
+    console.error(error)
+}
+
