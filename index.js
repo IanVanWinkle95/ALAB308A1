@@ -8,6 +8,7 @@
 //         incrementVariable(n+1)
 //     }
 // }
+
 // try {
 //     incrementVariable(0)
 // } catch (error) {
@@ -17,30 +18,30 @@
 
 // --------------------Part 2------------------------
 
-let counter = 0
+// let counter = 0
 
-const incrementVariable = (n) => {
-    console.log(n)
-    counter = n
-    if (n < 15000) {
-        return () => incrementVariable(n + 1)
-    }
-}
+// const incrementVariable = (n) => {
+//     console.log(n)
+//     counter = n
+//     if (n < 15000) {
+//         return () => incrementVariable(n + 1)
+//     }
+// }
 
-const trampoline = (f, ...args) => {
-    let result = f(...args);
-    while (typeof result === "function") {
-        result = result();
-    }
-    return result;
-}
+// const trampoline = (f, ...args) => {
+//     let result = f(...args);
+//     while (typeof result === "function") {
+//         result = result();
+//     }
+//     return result;
+// }
 
-try {
-    trampoline(incrementVariable, 0)
-} catch (error) {
-    console.error("An error has occurred!", error)
-    console.log("Value of the counter:", counter)
-}
+// try {
+//     trampoline(incrementVariable, 0)
+// } catch (error) {
+//     console.error("An error has occurred!", error)
+//     console.log("Value of the counter:", counter)
+// }
 
 // -----------------Part 2 Example-------------------
 
@@ -66,3 +67,24 @@ try {
 
 // ---------------------Part 3------------------------
 
+const holdText = document.getElementById("holdText")
+holdText.textContent = "primeNumber"
+
+const n = 50
+
+function isPrime(num) {
+    if (num <= 1) return false;
+        for (let i = 2; i * i <= n; i++) {
+            if (n % i === 0) return false;
+        }
+    return true;
+}
+
+let nextPrime = num;
+    while (true) {
+        if (isPrime(nextPrime)) {
+            console.log(`The next prime number after ${n} is ${nextPrime}`);
+            break;
+        }
+    nextPrime++;
+}
