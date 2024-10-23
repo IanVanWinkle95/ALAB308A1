@@ -1,11 +1,11 @@
-// -------------------Part 1--------------------
+// --------------------Part 1-----------------------
 
 // let counter = 0
 
-// function incrementVariable(number) {
-//     console.log(number)
-//     if (number < 15000) {
-//         incrementVariable(number+1)
+// function incrementVariable(n) {
+//     console.log(n)
+//     if (n < 15000) {
+//         incrementVariable(n+1)
 //     }
 // }
 // try {
@@ -15,25 +15,34 @@
 //     console.log("Value of the counter:", counter)
 // }
 
-// -------------------Part 2---------------------
+// --------------------Part 2------------------------
 
 let counter = 0
 
 const incrementVariable = (n) => {
     console.log(n)
+    counter = n
     if (n < 15000) {
         return () => incrementVariable(n + 1)
     }
 }
 
+const trampoline = (f, ...args) => {
+    let result = f(...args);
+    while (typeof result === "function") {
+        result = result();
+    }
+    return result;
+}
+
 try {
-    incrementVariable(0)
+    trampoline(incrementVariable, 0)
 } catch (error) {
     console.error("An error has occurred!", error)
     console.log("Value of the counter:", counter)
 }
 
-// ----------------Part 2 Example------------------
+// -----------------Part 2 Example-------------------
 
 // const factorial = (n) => {
 //     if (n === 0) return 1;
@@ -54,3 +63,6 @@ try {
 // }
 
 // console.log(trampoline(facto(10000)))
+
+// ---------------------Part 3------------------------
+
